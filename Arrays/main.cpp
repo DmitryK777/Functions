@@ -1,11 +1,16 @@
 ﻿#include <iostream>
 using namespace std;
 
+const int ROWS = 3;
+const int COLS = 5;
+
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(double array[], const int n, int minRand = 0, int maxRand = 100);
+void FillRand(int array[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
 
 void PrintRand(int arr[], const int n);
 void PrintRand(double array[], const int n);
+void PrintRand(int array[ROWS][COLS], const int ROWS, const int COLS);
 
 int Sum(int arr[], const int n);
 double Sum(double array[], const int n);
@@ -69,6 +74,10 @@ void main()
 	ShiftLeft(array, n);
 	ShiftRight(array, n);
 	cout << endl;
+
+	
+	int i_arr_2[ROWS][COLS];
+
 }
 
 void FillRand(int arr[], const int n, int minRand, int maxRand)
@@ -80,9 +89,24 @@ void FillRand(int arr[], const int n, int minRand, int maxRand)
 }
 void FillRand(double array[], const int n, int minRand, int maxRand)
 {
+	minRand *= 100;
+	maxRand *= 100;
 	for (int i = 0; i < n; i++)
 	{
-		array[i] = ((double)minRand/100) + (double)(rand() % (maxRand - minRand))/100;
+		//array[i] = ((double)minRand/100) + (double)(rand() % (maxRand - minRand))/100;
+		array[i] = (minRand + rand()) % (maxRand - minRand);
+		array[i] /= 100;
+	}
+}
+
+void FillRand(int array[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRand)
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			array[i][j] = minRand + rand() % (maxRand - minRand);
+		}
 	}
 }
 
@@ -101,6 +125,11 @@ void PrintRand(double array[], const int n)
 		cout << array[i] << "\t";
 	}
 	cout << endl;
+}
+
+void PrintRand(int array[ROWS][COLS], const int ROWS, const int COLS)
+{
+
 }
 
 int Sum(int arr[], const int n)
