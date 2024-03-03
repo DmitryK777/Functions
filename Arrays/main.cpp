@@ -8,12 +8,15 @@ void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(double array[], const int n, int minRand = 0, int maxRand = 100);
 void FillRand(int array[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRand = 100);
 
-void PrintRand(int arr[], const int n);
-void PrintRand(double array[], const int n);
+template<typename T>
+void PrintRand(const T arr[], const int n);
+//void PrintRand(double array[], const int n);
 void PrintRand(int array[ROWS][COLS], const int ROWS, const int COLS);
 
-int Sum(int arr[], const int n);
-double Sum(double array[], const int n);
+template<typename T>
+T Sum(const T arr[], const int n);
+//int Sum(int arr[], const int n);
+//double Sum(double array[], const int n);
 
 double Avg(int arr[], const int n);
 double Avg(double array[], const int n);
@@ -110,7 +113,8 @@ void FillRand(int array[ROWS][COLS], const int ROWS, const int COLS, int minRand
 	}
 }
 
-void PrintRand(int arr[], const int n)
+template<typename T> 
+void PrintRand(const T arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -118,6 +122,8 @@ void PrintRand(int arr[], const int n)
 	}
 	cout << endl;
 }
+
+/*
 void PrintRand(double array[], const int n)
 {
 	for (int i = 0; i < n; i++)
@@ -126,12 +132,32 @@ void PrintRand(double array[], const int n)
 	}
 	cout << endl;
 }
+*/
 
 void PrintRand(int array[ROWS][COLS], const int ROWS, const int COLS)
 {
-
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << array[i][j] << "\t";
+		}
+	}
+	cout << endl;
 }
 
+template<typename T>
+T Sum(const T arr[], const int n)
+{
+	T sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+}
+
+/*
 int Sum(int arr[], const int n)
 {
 	int sum = 0;
@@ -150,6 +176,7 @@ double Sum(double array[], const int n)
 	}
 	return sum;
 }
+*/
 
 double Avg(int arr[], const int n)
 {
