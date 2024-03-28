@@ -1,6 +1,6 @@
 #pragma once
 //FunctionsSeparation
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 #define tab "\t"
